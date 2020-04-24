@@ -2,11 +2,12 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreatePost = /* GraphQL */ `
-  subscription OnCreatePost {
-    onCreatePost {
+  subscription OnCreatePost($owner: String!) {
+    onCreatePost(owner: $owner) {
       id
       title
       content
+      owner
       comments {
         items {
           id
@@ -19,11 +20,12 @@ export const onCreatePost = /* GraphQL */ `
   }
 `;
 export const onUpdatePost = /* GraphQL */ `
-  subscription OnUpdatePost {
-    onUpdatePost {
+  subscription OnUpdatePost($owner: String!) {
+    onUpdatePost(owner: $owner) {
       id
       title
       content
+      owner
       comments {
         items {
           id
@@ -36,11 +38,12 @@ export const onUpdatePost = /* GraphQL */ `
   }
 `;
 export const onDeletePost = /* GraphQL */ `
-  subscription OnDeletePost {
-    onDeletePost {
+  subscription OnDeletePost($owner: String!) {
+    onDeletePost(owner: $owner) {
       id
       title
       content
+      owner
       comments {
         items {
           id
@@ -61,6 +64,7 @@ export const onCreateComment = /* GraphQL */ `
         id
         title
         content
+        owner
         comments {
           nextToken
         }
@@ -78,6 +82,7 @@ export const onUpdateComment = /* GraphQL */ `
         id
         title
         content
+        owner
         comments {
           nextToken
         }
@@ -95,6 +100,7 @@ export const onDeleteComment = /* GraphQL */ `
         id
         title
         content
+        owner
         comments {
           nextToken
         }

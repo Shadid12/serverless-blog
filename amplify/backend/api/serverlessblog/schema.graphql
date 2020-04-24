@@ -1,7 +1,12 @@
-type Post @model {
+type Post @model @auth(
+    rules: [
+      {allow: owner, ownerField: "owner", operations: [create, update, delete]},
+    ]
+) {
   id: ID!
   title: String!
   content: String!
+  owner: String
   comments: [Comment] @connection(keyName: "byPost", fields: ["id"])
 }
 
