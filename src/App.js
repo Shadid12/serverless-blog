@@ -1,6 +1,7 @@
 import React from 'react';
 import Home from './components/Home';
 import Post from './components/Post';
+import EditPost from './components/EditPost';
 import {
   BrowserRouter as Router,
   Switch,
@@ -27,6 +28,9 @@ function App() {
             </Route>
             <Route path="/posts/new">
               <Post />
+            </Route>
+            <Route path="/posts/edit/:id">
+              <EditPost />
             </Route>
           </Switch>
       </div>

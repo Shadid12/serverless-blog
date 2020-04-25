@@ -2,6 +2,10 @@ import React from 'react';
 import { withAuthenticator } from 'aws-amplify-react';
 import { API, graphqlOperation } from 'aws-amplify';
 import { listPosts } from '../graphql/queries';
+import { deletePost } from '../graphql/mutations';
+import {
+  Link
+} from "react-router-dom";
 
 function Home() {
   const [posts, setPosts] = React.useState([])
@@ -19,6 +23,21 @@ function Home() {
     }
   }
 
+  const deleteSelected = async id => {
+    try {
+      let input = {
+        id
+      }
+      let deleted  = await API.graphql(graphqlOperation(deletePost, {input}));
+      let newPosts = posts.filter(p => p.id !== id);
+      setPosts(newPosts);
+      console.log('Post delete', deleted);
+    } catch (error) {
+      alert('Not Allowed', error);
+    }
+  }
+
+
   return (
     <div >
       <ul>
@@ -27,8 +46,8 @@ function Home() {
                   <h4><a href="">{p.title}</a></h4>
                   <span>By {p.owner}</span>
                   <div>
-                    <button>delete</button>
-                    <button>Edit</button>
+                  <button onClick={() => deleteSelected(p.id)}>delete</button>
+                  <Link to={`/posts/edit/${p.id}`}>Edit</Link>
                   </div>
               </li>
           ))}
