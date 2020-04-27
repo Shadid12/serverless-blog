@@ -37,13 +37,12 @@ function Home() {
     }
   }
 
-
-  return (
+ return (
     <div >
       <ul>
           {posts.map(p => (
               <li>
-                  <h4><a href="">{p.title}</a></h4>
+                  <h4><Link to={`/posts/${p.id}`}>{p.title}</Link></h4>
                   <span>By {p.owner}</span>
                   <div>
                   <button onClick={() => deleteSelected(p.id)}>delete</button>

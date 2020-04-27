@@ -2,6 +2,7 @@ import React from 'react';
 import Home from './components/Home';
 import Post from './components/Post';
 import EditPost from './components/EditPost';
+import ViewPost from './components/ViewPost';
 import {
   BrowserRouter as Router,
   Switch,
@@ -31,6 +32,9 @@ function App() {
             </Route>
             <Route path="/posts/edit/:id">
               <EditPost />
+            </Route>
+            <Route path="/posts/:id">
+              <ViewPost />
             </Route>
           </Switch>
       </div>
